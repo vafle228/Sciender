@@ -1,0 +1,79 @@
+.userCard{
+    width: 100%; height: calc(100% - 4.5rem);
+    border-radius: 1rem;
+    position: relative;
+}
+.userCard__image{
+    width: 100%; height: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center;
+
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 0;
+
+    filter: brightness(0.8);
+    backdrop-filter: brightness(0.8);
+}
+.userCard__content{
+    width: 100%; height: 100%;
+    padding: 1rem;
+
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.userCard .status{
+    color: #fffd;
+}
+.userCard__name{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+}
+.userCard__role{
+    font-size: 1.125rem;
+    font-weight: normal;
+    color: #fff;
+}
+
+.userCard .tagList{
+    margin: 1rem 0;
+}
+.userCard .tag{
+    background-color: unset;
+    backdrop-filter: blur(0.5rem) brightness(0.8);
+    color: #fff;
+}
+
+.userCard__projectList{
+    width: 100%; height: auto;
+    margin-top: auto;
+
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+
+    overflow-x: auto;
+}
+
+.userCard__projectList .projectCard{
+    width: 16rem; height: auto;
+    min-width: 16rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    backdrop-filter: blur(0.5rem) brightness(0.8);
+    box-shadow: none !important;
+    background-color: unset;
+}
+.userCard__projectList .projectCard h3{
+    color: #fff;
+}
+.userCard__projectList .projectCard p{
+    color: #fffb;
+}

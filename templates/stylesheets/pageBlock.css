@@ -1,0 +1,17 @@
+.page__block{
+    width: 100%; height: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.page__block > h2{
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--text-primary-color);
+}
+.page__block > p{
+    font-size: 1.125rem;
+    font-weight: normal;
+    color: var(--text-universal-color);
+}

@@ -1,0 +1,27 @@
+.chatMessage{
+    width: 100%; height: auto;
+
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.chatMessage:first-of-type{
+    margin-top: auto;
+}
+.chatMessage__info{
+    width: calc(100% - 4rem); height: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.chatMessage__info h3{
+    font-size: 1.125rem;
+    font-weight: normal;
+    color: var(--text-primary-color);
+}
+.chatMessage__info p{
+    font-size: 1.125rem;
+    font-weight: normal;
+    color: var(--text-universal-color);
+}

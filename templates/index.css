@@ -1,0 +1,144 @@
+/* fonts */
+@import url("fonts/ClearSans/font-face.css");
+
+/* components */
+@import url("stylesheets/chatList.css");
+@import url("stylesheets/chat.css");
+@import url("stylesheets/card.css");
+@import url("stylesheets/container.css");
+@import url("stylesheets/createChatButton.css");
+@import url("stylesheets/desktopNavigation.css");
+@import url("stylesheets/avatar.css");
+@import url("stylesheets/avatarLarge.css");
+@import url("stylesheets/avatarSlider.css");
+@import url("stylesheets/header.css");
+@import url("stylesheets/input.css");
+@import url("stylesheets/mobileNavigation.css");
+@import url("stylesheets/page.css");
+@import url("stylesheets/search.css");
+@import url("stylesheets/standartButton.css");
+@import url("stylesheets/tabs.css");
+@import url("stylesheets/toggle.css");
+@import url("stylesheets/user.css");
+@import url("stylesheets/userList.css");
+@import url("stylesheets/anotherButton.css");
+@import url("stylesheets/status.css");
+@import url("stylesheets/userCard.css");
+@import url("stylesheets/languageSelect.css");
+@import url("stylesheets/language.css");
+@import url("stylesheets/aboutDevelopers.css");
+@import url("stylesheets/pageBlock.css");
+@import url("stylesheets/actions.css");
+@import url("stylesheets/action.css");
+@import url("stylesheets/projectCard.css");
+@import url("stylesheets/banner.css");
+@import url("stylesheets/tagList.css");
+@import url("stylesheets/tag.css");
+@import url("stylesheets/chatHistory.css");
+@import url("stylesheets/chatMessage.css");
+@import url("stylesheets/chatInput.css");
+@import url("stylesheets/authorizationForm.css");
+
+:root{
+    --text-universal-color: #a3a6ab;
+    --current-color: #619af1;
+}
+
+body[appearance=light]{
+    --bg-color: #fff;
+    --card-bg-color: #fff;
+    --additional-color: #f3f4f5;
+
+    --text-primary-color: #353535;
+    --text-secondary-color: #fcfcfc;
+}
+
+body[appearance=dark]{
+    --bg-color: #121212;
+    --card-bg-color: #1c1c1e;
+    --additional-color: #363636;
+
+    --text-primary-color: #fcfcfc;
+    --text-secondary-color: #353535;
+}
+
+
+*{ margin: 0; padding: 0; box-sizing: border-box }
+
+::-webkit-scrollbar{
+    width: 0; height: 0;
+}
+
+button, input, textarea{
+    border: none;
+    outline: none;
+    resize: none;
+}
+a{
+    text-decoration: none;
+    color: unset;
+}
+
+::placeholder{ font-family: 'Clear Sans' }
+
+html{
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body{
+    width: 100%; height: 100vh;
+    background-color: var(--bg-color);
+    font-family: "Clear Sans";
+
+    display: flex;
+    justify-content: center;
+
+    user-select: none;
+    -webkit-tap-highlight-color: #0000;
+}
+
+.mobileNavigation{
+    display: none;
+}
+.desktopNavigation{
+    display: flex;
+}
+
+@media (width < 72rem){
+    .mobileNavigation{
+        display: flex;
+    }
+    .desktopNavigation{
+        display: none;
+    }
+}
+
+/* hot classes */
+.flex{ display: flex }
+.row{ display: flex; flex-direction: row; align-items: center }
+.column{ display: flex; flex-direction: column }
+
+.g0{ gap: 0 }
+.g2{ gap: 0.125rem }
+.g4{ gap: 0.25rem }
+.g8{ gap: 0.5rem }
+.g12{ gap: 0.75rem }
+.g16{ gap: 1rem }
+.g20{ gap: 1.25rem }
+.g24{ gap: 1.5rem }
+.g32{ gap: 2rem }
+
+.items-stretch{ align-items: stretch }
+.items-center{ align-items: center; }
+
+.w100{ width: 100%; }
+.h100 { height: 100%; }
+
+.space-between{ justify-content: space-between }
+.center{ justify-content: center }
+
+.display-none{ display: none }
+
+.mlauto{ margin-left: auto }
+.mrauto{ margin-right: auto }
