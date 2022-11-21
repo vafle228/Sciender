@@ -1,3 +1,6 @@
+from AdminApp.models import ScienderAdmin, VerificationRequest
 from django.contrib import admin
 
-# Register your models here.
+
+admin.site.register(ScienderAdmin)
+admin.site.register(VerificationRequest)

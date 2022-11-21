@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'AdminApp.apps.AdminAppConfig',
     'AuthApp.apps.AuthAppConfig',
     'ChatApp.apps.ChatAppConfig',
+    'CoreApp.apps.CoreAppConfig',
     'MatchApp.apps.MatchAppConfig',
     'ProfileApp.apps.ProfileAppConfig',
     'ProjectApp.apps.ProjectAppConfig',
@@ -76,8 +77,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Sciender.wsgi.application'
+AUTH_USER_MODEL = 'AuthApp.BasicUser'
 
+WSGI_APPLICATION = 'Sciender.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

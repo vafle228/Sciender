@@ -1,3 +1,6 @@
 from django.contrib import admin
+from MatchApp.models import PreMatch, ScienderMatch
 
-# Register your models here.
+
+admin.site.register(PreMatch)
+admin.site.register(ScienderMatch)

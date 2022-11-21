@@ -1,3 +1,6 @@
+from ChatApp.models import ChatMessage, ScienderChat
 from django.contrib import admin
 
-# Register your models here.
+
+admin.site.register(ChatMessage)
+admin.site.register(ScienderChat)
