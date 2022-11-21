@@ -11,10 +11,10 @@ class BasicUser(AbstractUser):
 
 
 def userUploadPath(instance, filename: str) -> str:
-    return f'user/{instance.username}/{filename}'
+    return f'user/{instance.user.username}/{filename}'
 
 
-def userDefaultImage(instance, filename: str) -> InMemoryUploadedFile:
+def userDefaultImage() -> InMemoryUploadedFile:
     pass
 
 
@@ -26,7 +26,7 @@ class ScienderUser(models.Model):
     patronymic  = models.CharField(max_length=255, blank=True)
     
     STATUSES = (
-        ("Free", "Свободее"),
+        ("Free", "Свободен"),
         ("Working", "В работе"),
         ("Seeking team", "В поиске команды"),
         ("Seeking project", "В поиске проекта"),

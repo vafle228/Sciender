@@ -19,7 +19,7 @@ class BasicUserAdmin(UserAdmin):
     add_fieldsets = ((None, {
         'classes': ('wide',),
         'fields': ('username', 'email', 'is_staff', 'password1', 'password2')
-    }))
+    }),)
     search_fields = ('email',); ordering = ('email',)
 
 

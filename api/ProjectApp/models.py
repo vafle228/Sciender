@@ -6,7 +6,7 @@ def projectUploadPath(instance, filename: str) -> str:
     return f"projects/{instance.name}/{filename}"
 
 
-def projectDefaultImage(instance, filename: str) -> InMemoryUploadedFile:
+def projectDefaultImage() -> InMemoryUploadedFile:
     pass
  
 

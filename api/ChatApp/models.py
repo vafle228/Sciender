@@ -20,7 +20,7 @@ def backgroundUploadPath(instance, filename: str) -> str:
     return f"chats/{instance.name}/{filename}"
 
 
-def backgroundDefaultImage(instance, filename: str) -> InMemoryUploadedFile:
+def backgroundDefaultImage() -> InMemoryUploadedFile:
     pass
 
 
@@ -28,7 +28,8 @@ class ScienderChat(models.Model):
     name        = models.CharField(max_length=255)
     users       = models.ManyToManyField(to="AuthApp.ScienderUser", related_name="users")
     messages    = models.ManyToManyField(to="ChatMessage", related_name="messages", blank=True)
-    background  = models.ImageField(default=backgroundUploadPath, upload_to=backgroundDefaultImage)
+    background  = models.ImageField(default=backgroundDefaultImage, upload_to=backgroundUploadPath)
+    
     
     def __str__(self) -> str:
         return f"Chat {self.name}"
