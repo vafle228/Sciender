@@ -1,0 +1,41 @@
+.action{
+    flex: 1 0 auto;
+    max-width: 100%;
+    background-color: var(--card-bg-color);
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    padding-right: 3.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    position: relative;
+
+    cursor: pointer;
+}
+body[appearance=light] .action{
+    box-shadow: 0 0 0.5rem #0002;
+}
+.action:hover{
+    background-color: var(--additional-color);
+}
+
+.action__title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-primary-color);
+}
+.action__subtitle{
+    font-size: 1.125rem;
+    font-weight: normal;
+    color: var(--text-universal-color);
+}
+
+.action svg{
+    width: 2rem; height: 2rem;
+    fill: var(--current-color);
+
+    position: absolute;
+    top: 0.75rem; right: 1rem;
+}
