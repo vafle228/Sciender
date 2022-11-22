@@ -2,12 +2,12 @@
     <div class="authorizationForm">
         <img src="@/assets/logos/logo.png" class="authorizationForm__logo">
         <div class="tabs">
-            <StandartTab active="true" text="Вход"/>
+            <StandartTab active=true text="Вход"/>
             <StandartTab text="Регистрация"/>
         </div>
         <form>
-            <StandartInput name="login" placeholder="Логин"/>
-            <StandartInput name="password" placeholder="Пароль"/>
+            <StandartInput name="login" placeholder="Логин" v-model="login"/>
+            <StandartInput name="password" placeholder="Пароль" v-model="password"/>
             <StandartButton text="Войти"/>
         </form>
         <div class="authorizationForm__specialDivider">ИЛИ</div>
@@ -40,6 +40,13 @@
 
     export default {
         name: "LoginPage",
+
+        data() {
+            return {
+                login: "",
+                password: "",
+            }
+        },
 
         components: {
             StandartInput, StandartButton, StandartTab

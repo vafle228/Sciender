@@ -4,6 +4,7 @@
         class="input"
         :name="name"
         :placeholder="placeholder"
+        @input="$emit('update:modelValue', $event.target.value)"
         autocomplete="off"
     />
 </template>
@@ -16,6 +17,11 @@
             name: String,
             placeholder: String,
         },
+
+        // model: {
+        //     prop: "value",
+        //     event: "input",
+        // }
     }
 </script>
 
