@@ -6,9 +6,9 @@
             <StandartTab text="Регистрация"/>
         </div>
         <form>
-            <StandartInput name="login" placeholder="Логин" v-model="login"/>
-            <StandartInput name="password" placeholder="Пароль" v-model="password"/>
-            <StandartButton text="Войти"/>
+            <StandartInput name="login" placeholder="Логин" type="text" v-model="login"/>
+            <StandartInput name="password" placeholder="Пароль" type="password" v-model="password"/>
+            <StandartButton text="Войти" @click="loginUser()" type="button"/>
         </form>
         <div class="authorizationForm__specialDivider">ИЛИ</div>
         <div class="row g16">
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+    import axios from "axios";
+
     import StandartTab from "@/components/StandartTab.vue";
     import StandartInput from "@/components/StandartInput.vue";
     import StandartButton from "@/components/StandartButton.vue";
@@ -40,6 +42,10 @@
 
     export default {
         name: "LoginPage",
+        
+        components: {
+            StandartInput, StandartButton, StandartTab
+        },
 
         data() {
             return {
@@ -48,8 +54,20 @@
             }
         },
 
-        components: {
-            StandartInput, StandartButton, StandartTab
+        methods: {
+            async loginUser() {
+                const login_form = {
+                    username: this.login,
+                    password: this.password,
+                    // csrfmiddlewaretoken: document.cookie.match("csrftoken").input.split("=")[1]
+                };
+
+                console.log(login_form)
+
+                await axios
+                .post("http://127.0.0.1:8000/api/v1/token/login", login_form)
+                .then((response) => console.log(response));
+            }
         }
     }
 </script>

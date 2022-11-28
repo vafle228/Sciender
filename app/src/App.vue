@@ -5,9 +5,8 @@
 
 <script>
     export default {
-        beforeMount() {
+        created() {
             const token = localStorage.getItem("sciender-token");
-            console.log(token === null);
             if (token === null) this.$router.push('/login');
         }
     }
