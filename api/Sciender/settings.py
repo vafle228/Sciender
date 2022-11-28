@@ -20,6 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+API_ROOT = "sciender-api/v1/"
 SECRET_KEY = 'm)r@kf__&a!)lybvr)8wd5*ep1!#gs=o5pze9dqa5*n#g(azj='
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -51,7 +52,10 @@ INSTALLED_APPS = [
     'ProjectApp.apps.ProjectAppConfig',
 ]
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:8080"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://192.168.1.199:8080"
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,6 +87,14 @@ TEMPLATES = [
 ]
 
 AUTH_USER_MODEL = 'AuthApp.BasicUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 
 WSGI_APPLICATION = 'Sciender.wsgi.application'
 

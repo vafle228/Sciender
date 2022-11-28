@@ -1,8 +1,15 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+
+
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('api/v1/', include('djoser.urls.authtoken')),
+    
+    path(settings.API_ROOT + "user/", include("AuthApp.urls")),
+
+    path(settings.API_ROOT, include("djoser.urls")),
+    path(settings.API_ROOT, include("djoser.urls.authtoken")),
 ]
