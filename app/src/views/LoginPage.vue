@@ -8,7 +8,7 @@
         <form>
             <StandartInput name="login" placeholder="Логин" type="text" v-model="login"/>
             <StandartInput name="password" placeholder="Пароль" type="password" v-model="password"/>
-            <StandartButton text="Войти" @click="loginUser()" type="button"/>
+            <StandartButton text="Войти" @click="authUser()" type="button"/>
         </form>
         <div class="authorizationForm__specialDivider">ИЛИ</div>
         <div class="row g16">
@@ -33,7 +33,13 @@
 </template>
 
 <script>
-    import axios from "axios";
+    import { 
+        USER_PERMISSION, 
+        ADMIN_PERMISSION 
+    } from "@/services/constants";
+    
+
+    import LoginMixin from "@/mixins/LoginMixin";
 
     import StandartTab from "@/components/StandartTab.vue";
     import StandartInput from "@/components/StandartInput.vue";
@@ -42,10 +48,10 @@
 
     export default {
         name: "LoginPage",
+
+        mixins: [LoginMixin, ],
         
-        components: {
-            StandartInput, StandartButton, StandartTab
-        },
+        components: { StandartInput, StandartButton, StandartTab },
 
         data() {
             return {
@@ -55,22 +61,25 @@
         },
 
         methods: {
-            async loginUser() {
+            authUser() {
                 const login_form = {
                     username: this.login,
                     password: this.password,
-                    // csrfmiddlewaretoken: document.cookie.match("csrftoken").input.split("=")[1]
-                };
+                }; this._authUser(login_form);
+            },
 
-                console.log(login_form)
-
-                await axios
-                .post("http://127.0.0.1:8000/api/v1/token/login", login_form)
-                .then((response) => console.log(response));
-            }
+            redirectUser(user_info) {
+                const user_permission = user_info.permission;
+                
+                if (user_permission === USER_PERMISSION)
+                    return this.$router.push("sciender/main");
+                
+                return user_permission == ADMIN_PERMISSION 
+                    ? this.$router.push("/login") 
+                    : this.$router.push("/login");
+            },
         }
     }
 </script>
 
 <style src="@/assets/stylesheets/AuthForm.css"/>
-

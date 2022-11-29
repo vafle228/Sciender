@@ -54,7 +54,8 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
-    "http://192.168.1.199:8080"
+    "http://192.168.1.199:8080",
+    "http://172.20.10.2:8080",
 ]
 
 MIDDLEWARE = [
@@ -94,6 +95,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ]
+}
+
+DJOSER = {
+    "SERIALIZERS": {
+        "token": "CoreApp.serializers.ScienderTokenSerializer",
+    }
 }
 
 WSGI_APPLICATION = 'Sciender.wsgi.application'
