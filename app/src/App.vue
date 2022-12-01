@@ -1,16 +1,10 @@
 <template>
-    <router-view @error="print"/>
+    <router-view />
 </template>
 
 <script>
     export default {
-        name: "MainPage",
-
-        methods: {
-            print(event) {
-                console.log(event)
-            }
-        }
+        name: "RootLayout",
     }
 </script>
 

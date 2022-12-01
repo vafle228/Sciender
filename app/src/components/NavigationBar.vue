@@ -47,7 +47,6 @@
         },
 
         mounted() {
-            console.log(this.$parent.user);
             this.is_mobile = document.body.clientWidth < _72rem;
             
             window.addEventListener("resize", () => {
