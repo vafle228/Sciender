@@ -8,6 +8,10 @@ class BasicUser(AbstractUser):
     
     def __str__(self) -> str:
         return f"Basic user {self.username}"
+    
+    @property
+    def permission(self) -> str:
+        return "ScienderUser" if hasattr(self, "scienderuser") else "Admin"
 
 
 def userUploadPath(instance, filename: str) -> str:
@@ -19,7 +23,11 @@ def userDefaultImage() -> InMemoryUploadedFile:
 
 
 class ScienderUser(models.Model):
-    user        = models.OneToOneField("BasicUser", related_name="user", on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        "BasicUser", 
+        related_name="scienderuser", 
+        on_delete=models.CASCADE
+    )
     
     name        = models.CharField(max_length=255)
     surname     = models.CharField(max_length=255)

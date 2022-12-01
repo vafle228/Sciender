@@ -1,0 +1,7 @@
+.actions{
+    width: 100%; height: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}

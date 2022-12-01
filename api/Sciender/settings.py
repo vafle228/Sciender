@@ -20,6 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+API_ROOT = "sciender-api/v1/"
 SECRET_KEY = 'm)r@kf__&a!)lybvr)8wd5*ep1!#gs=o5pze9dqa5*n#g(azj='
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -31,14 +32,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne', 'rest_framework', 
+    'rest_framework.authtoken',
+    'djoser', 'corsheaders', 
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'rest_framework', 'djoser',
 
     'AdminApp.apps.AdminAppConfig',
     'AuthApp.apps.AuthAppConfig',
@@ -49,9 +52,17 @@ INSTALLED_APPS = [
     'ProjectApp.apps.ProjectAppConfig',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://192.168.1.199:8080",
+    "http://172.20.10.2:8080",
+    "http://192.168.1.188:8080"
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -79,7 +90,31 @@ TEMPLATES = [
 
 AUTH_USER_MODEL = 'AuthApp.BasicUser'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
+DJOSER = {
+    "SERIALIZERS": {
+        "token": "AuthApp.serializers.ScienderTokenSerializer",
+    }
+}
+
+ASGI_APPLICATION = 'Sciender.asgi.application'
 WSGI_APPLICATION = 'Sciender.wsgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

@@ -1,0 +1,24 @@
+.createChatButton{
+    width: 3.5rem; height: 3.5rem;
+    border-radius: 2rem;
+    background-color: var(--current-color);
+    padding: 1rem;
+
+    position: absolute; bottom: 1.5rem;
+    right: 1.5rem;
+
+    cursor: pointer;
+}
+.createChatButton svg{
+    width: 1.5rem; height: 1.5rem;
+    fill: #fff;
+}
+.createChatButton:hover{
+    filter: brightness(0.9);
+}
+
+@media (width < 72rem){
+    .createChatButton{
+        bottom: 5.5rem;
+    }
+}

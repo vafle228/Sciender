@@ -1,0 +1,23 @@
+button.standartButton{
+    height: 3rem;
+    max-height: 3rem; min-height: 3rem;
+    flex: 1 0 auto;
+    background-color: var(--current-color);
+    border-radius: 0.75rem;
+
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+
+    cursor: pointer;
+}
+button.standartButton:hover{
+    filter: brightness(0.9);
+}
+
+button.standartButton p{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+}

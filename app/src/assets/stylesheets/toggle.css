@@ -1,0 +1,31 @@
+.toggle{
+    width: 3rem; height: 3rem;
+    cursor: pointer;
+    appearance: none;
+    position: relative;
+}
+.toggle::before{
+    content: "";
+    width: 3rem; height: 1.5rem;
+    background-color: var(--additional-color);
+    position: absolute; top: 0.75em; left: 0;
+    border-radius: 0.75rem;
+    transition: all .2s;
+}
+.toggle::after{
+    content: "";
+    width: 1.25rem; height: 1.25rem;
+    margin: 0.125rem;
+    background-color: var(--text-universal-color);
+    position: absolute; top: 0.625rem; left: 0;
+    border-radius: 0.625rem;
+    transition: all .2s;
+}
+
+.toggle:checked::before{
+    background-color: var(--current-color);
+}
+.toggle:checked::after{
+    background-color: #fff;
+    left: 1.5rem;
+}

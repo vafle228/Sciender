@@ -1,0 +1,17 @@
+.aboutDevelopers{
+    text-align: center;
+}
+.aboutDevelopers p{
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--text-universal-color);
+}
+.aboutDevelopers a{
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--current-color);
+    cursor: pointer;
+}
+.aboutDevelopers a:hover{
+    filter: brightness(0.75);
+}

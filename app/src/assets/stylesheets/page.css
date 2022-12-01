@@ -1,0 +1,19 @@
+.page{
+    width: 100%; height: calc(100vh - 6rem);
+    padding: 0.5rem 1rem 1.5rem 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    overflow: auto;
+    position: relative;
+
+    scroll-behavior: smooth;
+}
+
+@media (width < 72rem){
+    .page{
+        height: calc(100vh - 10rem);
+    }
+}

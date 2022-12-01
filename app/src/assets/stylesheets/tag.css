@@ -1,0 +1,13 @@
+.tag{
+    height: 2rem;
+    padding: 0 0.5rem;
+    background-color: var(--additional-color);
+    border-radius: 0.5rem;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary-color);
+}
