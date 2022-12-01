@@ -12,6 +12,12 @@
                 default: false,
             },
             text: String,
+        },
+
+        methods: {
+            print(event) {
+                console.log(event)
+            }
         }
     }
 </script>

@@ -1,18 +1,16 @@
-from djoser.serializers import TokenSerializer
-from rest_framework.serializers import ModelSerializer
-from AuthApp.models import BasicUser
-from djoser.conf import settings
+from rest_framework import serializers
+from AuthApp.models import BasicUser, ScienderUser
 
 
-class BasicUserPermissionSerializer(ModelSerializer):
+class BasicUserModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = BasicUser
-        fields = ("permission", )
+        fields = ("id", "username", "email")
 
 
-class ScienderTokenSerializer(TokenSerializer):
-    user = BasicUserPermissionSerializer()
+class ScienderUserModelSerializer(serializers.ModelSerializer):
+    user = BasicUserModelSerializer()
     
     class Meta:
-        model = settings.TOKEN_MODEL
-        fields = ("user", "auth_token")
+        model = ScienderUser
+        fields = "__all__"

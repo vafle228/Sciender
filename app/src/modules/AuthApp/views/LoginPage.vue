@@ -8,7 +8,7 @@
         <form>
             <StandartInput name="login" placeholder="Логин" type="text" v-model="login"/>
             <StandartInput name="password" placeholder="Пароль" type="password" v-model="password"/>
-            <StandartButton text="Войти" @click="authUser()" type="button"/>
+            <StandartButton text="Войти" @click="loginUser()" type="button"/>
         </form>
         <div class="authorizationForm__specialDivider">ИЛИ</div>
         <div class="row g16">
@@ -33,25 +33,30 @@
 </template>
 
 <script>
+    import axios from "axios";
+    
     import { 
         USER_PERMISSION, 
-        ADMIN_PERMISSION 
-    } from "@/services/constants";
-    
-
-    import LoginMixin from "@/mixins/LoginMixin";
+        ADMIN_PERMISSION,
+        PERMISSION_NAME, 
+        TOKEN_NAME
+    } from "@/utils/constants";
+    import Notification from "@/utils/notification";
 
     import StandartTab from "@/components/StandartTab.vue";
     import StandartInput from "@/components/StandartInput.vue";
     import StandartButton from "@/components/StandartButton.vue";
-    
+
+    const login_root = "token/login";
 
     export default {
         name: "LoginPage",
-
-        mixins: [LoginMixin, ],
         
-        components: { StandartInput, StandartButton, StandartTab },
+        components: { 
+            StandartInput, 
+            StandartButton, 
+            StandartTab 
+        },
 
         data() {
             return {
@@ -60,12 +65,30 @@
             }
         },
 
+        mounted() {
+            this.$emit("error", ["Fuck ur ass"])
+        },
+
         methods: {
-            authUser() {
+            loginUser() {
                 const login_form = {
                     username: this.login,
                     password: this.password,
-                }; this._authUser(login_form);
+                };
+
+                axios.defaults.headers.common["Authorization"] = "";
+
+                axios.post(login_root, login_form)
+                    .then((response) => {
+                        const token = response.data.auth_token;
+
+                        this._updateLocalStorage(response);
+                        this.$store.commit("setToken", token);
+                        axios.defaults.headers.common["Authorization"] = `Token ${token}`;
+
+                        this.redirectUser(response.data.user);
+                    })
+                    .catch((error) => Notification.errorNotification(error));
             },
 
             redirectUser(user_info) {
@@ -77,6 +100,14 @@
                 return user_permission == ADMIN_PERMISSION 
                     ? this.$router.push("/login") 
                     : this.$router.push("/login");
+            },
+
+            _updateLocalStorage(response) {
+                const token = response.data.auth_token;
+                const permission = response.data.user.permission;
+
+                localStorage.setItem(TOKEN_NAME, token);
+                localStorage.setItem(PERMISSION_NAME, permission);
             },
         }
     }

@@ -32,16 +32,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne', 'rest_framework', 
+    'rest_framework.authtoken',
+    'djoser', 'corsheaders', 
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'rest_framework', 'djoser',
-    'rest_framework.authtoken',
-    'corsheaders',
 
     'AdminApp.apps.AdminAppConfig',
     'AuthApp.apps.AuthAppConfig',
@@ -56,6 +56,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://192.168.1.199:8080",
     "http://172.20.10.2:8080",
+    "http://192.168.1.188:8080"
 ]
 
 MIDDLEWARE = [
@@ -99,11 +100,21 @@ REST_FRAMEWORK = {
 
 DJOSER = {
     "SERIALIZERS": {
-        "token": "CoreApp.serializers.ScienderTokenSerializer",
+        "token": "AuthApp.serializers.ScienderTokenSerializer",
     }
 }
 
+ASGI_APPLICATION = 'Sciender.asgi.application'
 WSGI_APPLICATION = 'Sciender.wsgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

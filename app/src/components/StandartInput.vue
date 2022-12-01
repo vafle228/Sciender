@@ -1,8 +1,8 @@
 <template>
     <input 
         class="input"
-        @input="$emit('update:modelValue', $event.target.value)"
         autocomplete="off"
+        @input="$emit('update:modelValue', $event.target.value)"
     />
 </template>
 
