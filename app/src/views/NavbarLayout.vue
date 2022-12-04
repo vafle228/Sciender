@@ -10,15 +10,5 @@
         name: "NavbarLayout",
 
         components: { NavigationBar, },
-
-        data() {
-            return {
-                user: 1,
-            }
-        },
-
-        created() {
-            console.log("Hello");
-        }
     }
 </script>

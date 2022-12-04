@@ -1,16 +1,21 @@
 from rest_framework import serializers
-from AuthApp.models import BasicUser, ScienderUser
+from CoreApp.models import ScienceInterest, WorkLink
+from AuthApp.models import ScienderUser
 
 
-class BasicUserModelSerializer(serializers.ModelSerializer):
+class ScienceInterestSerialize(serializers.ModelSerializer):
     class Meta:
-        model = BasicUser
-        fields = ("id", "username", "email")
+        model = ScienceInterest
+        fields = ("name", )
 
 
-class ScienderUserModelSerializer(serializers.ModelSerializer):
-    user = BasicUserModelSerializer()
-    
+class WorkLinkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkLink
+        fields = ("link", )
+
+
+class ScienderUserImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScienderUser
-        fields = "__all__"
+        fields = ("image", )

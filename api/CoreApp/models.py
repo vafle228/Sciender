@@ -8,7 +8,7 @@ class WorkLink(models.Model):
         return f"Link number {self.id}"
 
 
-class ScienceInterests(models.Model):
+class ScienceInterest(models.Model):
     name = models.CharField(max_length=255)
     
     def __str__(self) -> str:

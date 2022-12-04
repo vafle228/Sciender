@@ -1,6 +1,6 @@
-from CoreApp.models import WorkLink, ScienceInterests
+from CoreApp.models import WorkLink, ScienceInterest
 from django.contrib import admin
 
 
 admin.site.register(WorkLink)
-admin.site.register(ScienceInterests)
+admin.site.register(ScienceInterest)

@@ -1,11 +1,12 @@
 from rest_framework import generics
-from CoreApp.serializers import ScienderUserModelSerializer
-from AuthApp.models import ScienderUser
+from CoreApp.serializers import ScienderUserImageSerializer
 
 from rest_framework.permissions import IsAuthenticated
 
 
-class ScienderUserRetrieveView(generics.RetrieveAPIView):
-    queryset = ScienderUser.objects.all()
-    serializer_class = ScienderUserModelSerializer
+class ScienderUserRetrieveAPIView(generics.RetrieveAPIView):
+    serializer_class = ScienderUserImageSerializer
     permission_classes = [IsAuthenticated, ]
+    
+    def get_object(self):
+        return self.request.user.scienderuser

@@ -23,8 +23,8 @@ class ScienderProject(models.Model):
     )
     
     interests = models.ManyToManyField(
-        to="CoreApp.ScienceInterests", 
-        related_name="interests", blank=True
+        to="CoreApp.ScienceInterest", 
+        related_name="interest", blank=True
     )
     
     STATUSES = (
@@ -38,4 +38,7 @@ class ScienderProject(models.Model):
     name        = models.CharField(max_length=255)
     status      = models.CharField(max_length=255, choices=STATUSES, default=DEFAULT_STATUS)
     image       = models.ImageField(upload_to=projectUploadPath, default=projectDefaultImage)
+    
+    def __str__(self) -> str:
+        return f"Project {self.name}"
     

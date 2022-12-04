@@ -47,8 +47,8 @@ class ScienderUser(models.Model):
     )
     
     interests = models.ManyToManyField(
-        to="CoreApp.ScienceInterests", 
-        related_name="user_interests", blank=True
+        to="CoreApp.ScienceInterest", 
+        related_name="user_interest", blank=True
     )
     
     about       = models.TextField(blank=True)

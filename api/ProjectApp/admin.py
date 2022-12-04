@@ -1,3 +1,5 @@
 from django.contrib import admin
+from ProjectApp.models import ScienderProject
 
-# Register your models here.
+
+admin.site.register(ScienderProject)

@@ -7,8 +7,12 @@
         </div>
         <form>
             <StandartInput name="login" placeholder="Логин" type="text" v-model="login"/>
+            
             <StandartInput name="password" placeholder="Пароль" type="password" v-model="password"/>
-            <StandartButton text="Войти" @click="loginUser()" type="button"/>
+            
+            <StandartButton text="Войти" @click="loginUser()" type="button">
+                <p>Войти</p>
+            </StandartButton>
         </form>
         <div class="authorizationForm__specialDivider">ИЛИ</div>
         <div class="row g16">
@@ -39,15 +43,14 @@
         USER_PERMISSION, 
         ADMIN_PERMISSION,
         PERMISSION_NAME, 
-        TOKEN_NAME
+        TOKEN_NAME,
+        LOGIN_ROOT
     } from "@/utils/constants";
     import Notification from "@/utils/notification";
 
     import StandartTab from "@/components/StandartTab.vue";
     import StandartInput from "@/components/StandartInput.vue";
     import StandartButton from "@/components/StandartButton.vue";
-
-    const login_root = "token/login";
 
     export default {
         name: "LoginPage",
@@ -65,10 +68,6 @@
             }
         },
 
-        mounted() {
-            this.$emit("error", ["Fuck ur ass"])
-        },
-
         methods: {
             loginUser() {
                 const login_form = {
@@ -78,12 +77,12 @@
 
                 axios.defaults.headers.common["Authorization"] = "";
 
-                axios.post(login_root, login_form)
+                axios.post(LOGIN_ROOT, login_form)
                     .then((response) => {
                         const token = response.data.auth_token;
 
                         this._updateLocalStorage(response);
-                        this.$store.commit("setToken", token);
+                        // this.$store.commit("setToken", token);
                         axios.defaults.headers.common["Authorization"] = `Token ${token}`;
 
                         this.redirectUser(response.data.user);
@@ -95,11 +94,11 @@
                 const user_permission = user_info.permission;
                 
                 if (user_permission === USER_PERMISSION)
-                    return this.$router.push("sciender/main");
+                    return this.$router.push({ name: "main" });
                 
                 return user_permission == ADMIN_PERMISSION 
-                    ? this.$router.push("/login") 
-                    : this.$router.push("/login");
+                    ? this.$router.push({ name: "login" }) 
+                    : this.$router.push({ name: "login" });
             },
 
             _updateLocalStorage(response) {
