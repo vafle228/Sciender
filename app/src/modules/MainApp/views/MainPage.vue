@@ -108,5 +108,4 @@
     }
 </script>
 
-<style src="@/assets/stylesheets/Container.css" />
 <style src="@/assets/stylesheets/Page.css" />

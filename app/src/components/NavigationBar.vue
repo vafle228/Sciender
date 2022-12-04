@@ -20,7 +20,7 @@
             <p>Главная</p>
         </a>
         <a 
-            @click="$router.push({'name': 'main'})"
+            @click="$router.push({'name': 'contacts'})"
             :class="`${nav_class}__link ${active === 'contacts' ? 'active' : ''}`"
         >
             <svg viewBox="0 0 512 512">

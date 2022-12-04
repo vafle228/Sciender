@@ -19,3 +19,6 @@ export const CREATE_MATCH = "match/create";
 export const USER_INFO = (id) => `profile/${id}/info`;
 export const PROJECTS_INFO = (id) => `profile/${id}/projects`;
 export const PROJECT_DETAIL = (id) => `projects/${id}/detail`;
+export const TO_USER_PREMATCH = "match/prematch/to_user";
+export const FROM_USER_PREMATCH = "match/prematch/from_user";
+export const USER_MATCH = "match/";

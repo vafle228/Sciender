@@ -1,5 +1,5 @@
 <template>
-    <NavigationBar active="main" :id="id"/>
+    <NavigationBar active="contacts" :id="id"/>
     <router-view />
 </template>
 

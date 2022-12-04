@@ -4,6 +4,7 @@ from MatchApp.models import PreMatch, ScienderMatch
 from ProjectApp.models import ScienderProject
 from ProjectApp.serializers import ScienderProjectPreviewSerializer
 from rest_framework import serializers
+from AuthApp.serializers import ScienderUserPreviewSerializer
 
 
 class ScienderUserCardSerializer(serializers.ModelSerializer):
@@ -27,6 +28,9 @@ class ScienderUserCardSerializer(serializers.ModelSerializer):
 
 
 class ScienderMatchSeriazlizer(serializers.ModelSerializer):
+    to_user = ScienderUserPreviewSerializer()
+    from_user = ScienderUserPreviewSerializer()
+    
     class Meta:
         model = ScienderMatch
         fields = "__all__"
@@ -36,3 +40,19 @@ class PreMatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = PreMatch
         fields = "__all__"
+
+
+class PreMatchToSerializer(serializers.ModelSerializer):
+    to_user = ScienderUserPreviewSerializer()
+    
+    class Meta:
+        model = PreMatch
+        fields = ("to_user", )
+
+
+class PreMatchFromSerializer(serializers.ModelSerializer):
+    from_user = ScienderUserPreviewSerializer()
+    
+    class Meta:
+        model = PreMatch
+        fields = ("from_user", )
