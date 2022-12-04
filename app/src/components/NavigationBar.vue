@@ -29,7 +29,7 @@
             <p>Контакты</p>
         </a>
         <a
-            @click="$router.push({'name': 'main'})"
+            @click="$router.push({'name': 'chats'})"
             :class="`${nav_class}__link ${active === 'chats' ? 'active' : ''}`"
         >
             <svg viewBox="0 0 640 512">

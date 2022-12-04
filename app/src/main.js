@@ -9,6 +9,7 @@ import MainApp from '@/modules/MainApp';
 import ProfileApp from '@/modules/ProfileApp';
 import SettingsApp from './modules/SettingsApp';
 import ContactApp from './modules/ContactApp';
+import ChatApp from './modules/ChatApp';
 
 import { BASE_URL } from '@/utils/constants'
 
@@ -23,6 +24,7 @@ registerModules({
     profileapp: ProfileApp,
     settingsapp: SettingsApp,
     contactapp: ContactApp,
+    chatapp: ChatApp,
 });
 
 createApp(App).use(store).use(router).mount('#app');

@@ -22,3 +22,4 @@ export const PROJECT_DETAIL = (id) => `projects/${id}/detail`;
 export const TO_USER_PREMATCH = "match/prematch/to_user";
 export const FROM_USER_PREMATCH = "match/prematch/from_user";
 export const USER_MATCH = "match/";
+export const USER_CHATS = "chats/"
