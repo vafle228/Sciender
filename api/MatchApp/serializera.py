@@ -1,9 +1,9 @@
-from rest_framework import serializers
 from AuthApp.models import ScienderUser
 from CoreApp.serializers import ScienceInterestSerialize
-from ProjectApp.serializers import ScienderProjectPreviewSerializer
-
+from MatchApp.models import PreMatch, ScienderMatch
 from ProjectApp.models import ScienderProject
+from ProjectApp.serializers import ScienderProjectPreviewSerializer
+from rest_framework import serializers
 
 
 class ScienderUserCardSerializer(serializers.ModelSerializer):
@@ -13,7 +13,7 @@ class ScienderUserCardSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ScienderUser
-        fields = ("name", "surname", "status", "image", "interests", "projects")
+        fields = ("id", "name", "surname", "status", "image", "interests", "projects")
     
     def get_status(self, obj: ScienderUser) -> str:
         return obj.get_status_display()
@@ -24,3 +24,15 @@ class ScienderUserCardSerializer(serializers.ModelSerializer):
             ScienderProject.objects.filter(team__id=obj.id)), 
             many=True
         ).data
+
+
+class ScienderMatchSeriazlizer(serializers.ModelSerializer):
+    class Meta:
+        model = ScienderMatch
+        fields = "__all__"
+    
+
+class PreMatchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PreMatch
+        fields = "__all__"

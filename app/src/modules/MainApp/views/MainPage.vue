@@ -25,7 +25,7 @@
                     </svg>
                 </AnotherButton>
                 
-                <StandartButton>
+                <StandartButton @click="createMatch">
                     <p>Лайк</p>
                 </StandartButton>
                 
@@ -48,7 +48,7 @@
     import StandartButton from "@/components/StandartButton.vue";
     import StandartHeader from "@/components/StandartHeader.vue";
 
-    import { USER_CARD_URL } from "@/utils/constants";
+    import { USER_CARD_URL, CREATE_MATCH } from "@/utils/constants";
 
     export default {
         name: "MainPage",
@@ -86,6 +86,16 @@
                     this.current_card = this.user_cards.length;
                 this.current_card--;
             },
+
+            createMatch() {
+                const match_form = {
+                    to_user: this.card.id
+                }
+
+                axios.post(CREATE_MATCH, match_form)
+                    .then((response) => console.log(response))
+                    .catch((error) => console.log(error))
+            }
         },
 
         computed: {

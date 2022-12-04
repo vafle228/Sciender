@@ -1,4 +1,4 @@
-from AuthApp.forms import BasicUserChangeForm, BasicUserCreationForm
+from AuthApp.forms import BasicUserChangeForm, BasicUserCreationForm, ScienderUserCreateForm
 from AuthApp.models import BasicUser, ScienderUser
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
@@ -23,5 +23,9 @@ class BasicUserAdmin(UserAdmin):
     search_fields = ('email',); ordering = ('email',)
 
 
-admin.site.register(ScienderUser)
+class ScienderUserAdmin(admin.ModelAdmin):
+    form = ScienderUserCreateForm
+
+
+admin.site.register(ScienderUser, ScienderUserAdmin)
 admin.site.register(BasicUser, BasicUserAdmin)

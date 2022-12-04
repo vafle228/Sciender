@@ -19,17 +19,17 @@ class PreMatch(models.Model):
 
 
 class ScienderMatch(models.Model):
-    user1 = models.ForeignKey(
+    to_user = models.ForeignKey(
         to="AuthApp.ScienderUser", 
         related_name="user1", 
         on_delete=models.CASCADE
     )
     
-    user2 = models.ForeignKey(
+    from_user = models.ForeignKey(
         to="AuthApp.ScienderUser", 
         related_name="user2", 
         on_delete=models.CASCADE
     )
     
     def __str__(self) -> str:
-        return f"Match {self.user1} with {self.user2}"
+        return f"Match {self.to_user} with {self.from_user}"
