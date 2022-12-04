@@ -84,7 +84,7 @@
 
 <script>
     import axios from "axios";
-    import { USER_INFO } from "@/utils/constants";
+    import { USER_INFO, ID_NAME } from "@/utils/constants";
     
     import StandartTab from "@/components/StandartTab.vue";
     import UserAvatar from "@/components/UserAvatar.vue";
@@ -110,7 +110,9 @@
             axios.get(USER_INFO(this.$route.params.id))
                 .then((response) => {
                     this.user = response.data;
-                    this.is_visitor = this.user.id != this.$route.params.id
+
+                    const my_id = localStorage.getItem(ID_NAME)
+                    this.is_visitor = my_id != this.$route.params.id
                 })
                 .catch((error) => Notification.errorNotification(error))
         },
