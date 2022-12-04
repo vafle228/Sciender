@@ -22,3 +22,9 @@ class ScienderTokenSerializer(TokenSerializer):
     class Meta:
         model = settings.TOKEN_MODEL
         fields = ("user", "auth_token", )
+
+
+class ScienderUserPreviewSerializer(ModelSerializer):
+    class Meta:
+        model = ScienderUser
+        fields = ("id", "name", "surname", "image")

@@ -64,6 +64,7 @@
                     class="projectCard" 
                     v-for="(project, index) in user.projects"
                     :key="index"
+                    @click="$router.push({'name': 'project_detail', params: {'id': project.id}})"
                 >
                     <h3>{{ project.name }}</h3>
                     <ObjectStatus :status="project.status"/>

@@ -16,5 +16,6 @@ export const USER_IMAGE_URL = "core/image";
 export const USER_CARD_URL = "match/user_cards";
 export const LOGIN_ROOT = "token/login";
 export const CREATE_MATCH = "match/create";
-export const USER_INFO = (id) => `profile/${id}/info`
-export const PROJECTS_INFO = (id) => `profile/${id}/projects`
+export const USER_INFO = (id) => `profile/${id}/info`;
+export const PROJECTS_INFO = (id) => `profile/${id}/projects`;
+export const PROJECT_DETAIL = (id) => `projects/${id}/detail`;

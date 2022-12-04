@@ -1,6 +1,7 @@
 const ModuleLayout = () => import("./ModuleLayout.vue");
 const UserInfo = () => import("./views/UserInfo.vue");
 const UserProjects = () => import("./views/UserProjects.vue");
+const ProjectDetail = () => import("./views/ProjectDetail.vue");
 
 const module_routes = {
     path: "/profile",
@@ -15,6 +16,11 @@ const module_routes = {
             path: "projects/:id",
             name: "projects_info",
             component: UserProjects,
+        },
+        {
+            path: "project/:id",
+            name: "project_detail",
+            component: ProjectDetail,
         },
     ]
 };
