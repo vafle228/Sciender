@@ -6,7 +6,7 @@
         </StandartHeader>
 
         <div class="page">
-            <div class="card expanded">
+            <div :class="to_matches.length ? 'card expanded' : 'card'">
                 <div class="card__header">
                     <h2 class="card__title">Вы понравились этим людям</h2>
                     <svg viewBox="0 0 448 512">
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="card expanded">
+            <div :class="from_matches.length ? 'card expanded' : 'card'">
                 <div class="card__header">
                     <h2 class="card__title">Вам понравились эти люди</h2>
                     <svg viewBox="0 0 448 512">
