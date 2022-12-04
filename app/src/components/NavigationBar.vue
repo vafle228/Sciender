@@ -38,7 +38,7 @@
             <p>Чаты</p>
         </a>
         <a
-            @click="$router.push({'name': 'main'})"
+            @click="$router.push({'name': 'settings'})"
             :class="`${nav_class}__link ${active === 'settings' ? 'active' : ''}`"
         >
             <svg viewBox="0 0 512 512">
