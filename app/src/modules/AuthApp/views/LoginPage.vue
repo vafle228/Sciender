@@ -2,7 +2,7 @@
     <div class="authorizationForm">
         <img src="@/assets/logos/logo.png" class="authorizationForm__logo">
         <div class="tabs">
-            <StandartTab active=true text="Вход"/>
+            <StandartTab :active="true" text="Вход"/>
             <StandartTab text="Регистрация"/>
         </div>
         <form>
@@ -44,7 +44,8 @@
         ADMIN_PERMISSION,
         PERMISSION_NAME, 
         TOKEN_NAME,
-        LOGIN_ROOT
+        LOGIN_ROOT,
+        ID_NAME,
     } from "@/utils/constants";
     import Notification from "@/utils/notification";
 
@@ -82,7 +83,6 @@
                         const token = response.data.auth_token;
 
                         this._updateLocalStorage(response);
-                        // this.$store.commit("setToken", token);
                         axios.defaults.headers.common["Authorization"] = `Token ${token}`;
 
                         this.redirectUser(response.data.user);
@@ -102,9 +102,11 @@
             },
 
             _updateLocalStorage(response) {
+                const id = response.data.user.id;
                 const token = response.data.auth_token;
                 const permission = response.data.user.permission;
 
+                localStorage.setItem(ID_NAME, id);
                 localStorage.setItem(TOKEN_NAME, token);
                 localStorage.setItem(PERMISSION_NAME, permission);
             },

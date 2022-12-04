@@ -20,3 +20,6 @@
         components: { UserAvatar }
     }
 </script>
+
+<style src="@/assets/stylesheets/Header.css" />
+<style src="@/assets/stylesheets/Container.css" />

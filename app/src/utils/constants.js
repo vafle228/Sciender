@@ -1,5 +1,6 @@
 export const TOKEN_NAME = "sciender-token";
 export const PERMISSION_NAME = "sciender-permission";
+export const ID_NAME = "sciender-id";
 
 export const USER_PERMISSION = "ScienderUser";
 export const ADMIN_PERMISSION = "Admin";
@@ -15,3 +16,5 @@ export const USER_IMAGE_URL = "core/image";
 export const USER_CARD_URL = "match/user_cards";
 export const LOGIN_ROOT = "token/login";
 export const CREATE_MATCH = "match/create";
+export const USER_INFO = (id) => `profile/${id}/info`
+export const PROJECTS_INFO = (id) => `profile/${id}/projects`

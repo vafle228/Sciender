@@ -11,4 +11,5 @@ urlpatterns = [
     
     path(settings.API_ROOT + "core/", include("CoreApp.urls")),
     path(settings.API_ROOT + "match/", include("MatchApp.urls")),
+    path(settings.API_ROOT + "profile/", include("ProfileApp.urls")),
 ]

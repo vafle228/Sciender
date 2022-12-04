@@ -13,7 +13,7 @@ class ScienderUserCardSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ScienderUser
-        fields = ("id", "name", "surname", "status", "image", "interests", "projects")
+        fields = ("id", "name", "surname", "status", "image", "interests", "projects", "permission")
     
     def get_status(self, obj: ScienderUser) -> str:
         return obj.get_status_display()

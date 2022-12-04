@@ -59,3 +59,17 @@ class ScienderUser(models.Model):
 
     def __str__(self) -> str:
         return f"Sciender user from {self.user}"
+    
+    @property
+    def permission(self) -> str:
+        permissions = (
+            ("student_user", "Студент"),
+            ("graduate_user", "Студент аспирант"),
+            ("tutor_user", "Научный тьютор"),
+            ("worker_user", "Научный работник"),
+        )
+        
+        for permission in permissions:
+            if hasattr(self, permission[0]):
+                return permission[1]
+        return ""

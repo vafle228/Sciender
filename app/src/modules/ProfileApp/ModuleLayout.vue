@@ -1,5 +1,5 @@
 <template>
-    <NavigationBar active="main" :id="id"/>
+    <NavigationBar active="profile" :id="id"/>
     <router-view />
 </template>
 
@@ -9,6 +9,6 @@
 
 	export default {
         mixins: [ UseridMixin ],
-        components: { NavigationBar },
+        components: { NavigationBar }
     };
 </script>

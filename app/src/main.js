@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import AuthApp from '@/modules/AuthApp';
 import MainApp from '@/modules/MainApp';
+import ProfileApp from '@/modules/ProfileApp';
 
 import { BASE_URL } from '@/utils/constants'
 
@@ -17,6 +18,7 @@ axios.defaults.baseURL = BASE_URL;
 registerModules({
     authapp: AuthApp,
     mainapp: MainApp,
+    profileapp: ProfileApp,
 });
 
 createApp(App).use(store).use(router).mount('#app');

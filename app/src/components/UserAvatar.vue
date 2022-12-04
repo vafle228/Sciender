@@ -12,6 +12,13 @@
     export default {
         name: "UserAvatar",
 
+        props: {
+            link: {
+                type: String,
+                default: ""
+            }
+        },
+
         data() {
             return {
                 user_image: undefined,
@@ -19,9 +26,11 @@
         },
 
         beforeMount() {
-            axios.get(USER_IMAGE_URL)
-                .then((response) => this.user_image = response.data.image)
-                .catch((error) => console.log(error));
+            if (this.link === "")
+                axios.get(USER_IMAGE_URL)
+                    .then((response) => this.user_image = response.data.image)
+                    .catch((error) => console.log(error));
+            else this.user_image = this.link;
         }
     }
 </script>

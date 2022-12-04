@@ -10,12 +10,14 @@
             <UserCard
                 v-if="card"
 
+                :id="card.id"
                 :name="card.name"
                 :status="card.status"
                 :surname="card.surname"
                 :image_link="card.image"
                 :projects="card.projects"
                 :interests="card.interests"
+                :permission="card.permission"
             />
 
             <div class="row g24">
@@ -48,6 +50,8 @@
     import StandartButton from "@/components/StandartButton.vue";
     import StandartHeader from "@/components/StandartHeader.vue";
 
+    import Notification from "@/utils/notification";
+
     import { USER_CARD_URL, CREATE_MATCH } from "@/utils/constants";
 
     export default {
@@ -70,7 +74,7 @@
         created () {
             axios.get(USER_CARD_URL)
                 .then((response) => this.user_cards = response.data)
-                .catch((error) => console.log(error));
+                .catch((error) => Notification.errorNotification(error));
         },
 
         methods: {
@@ -93,8 +97,8 @@
                 }
 
                 axios.post(CREATE_MATCH, match_form)
-                    .then((response) => console.log(response))
-                    .catch((error) => console.log(error))
+                    .then((response) => Notification.confirmNotification(response))
+                    .catch((error) => Notification.errorNotification(error))
             }
         },
 
@@ -105,5 +109,4 @@
 </script>
 
 <style src="@/assets/stylesheets/Container.css" />
-<style src="@/assets/stylesheets/Header.css" />
 <style src="@/assets/stylesheets/Page.css" />

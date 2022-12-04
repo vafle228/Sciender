@@ -1,5 +1,5 @@
 <template>
-    <div class="userCard">
+    <div class="userCard" @click="$router.push({'name': 'user_info', 'params': {'id': id}})">
         <img :src="image_link" class="userCard__image">
 
         <div class="userCard__content">
@@ -43,6 +43,7 @@
         },
 
         props: {
+            id: Number,
             name: String,
             status: String,
             surname: String,

@@ -1,15 +1,12 @@
 from AuthApp.models import ScienderUser
 from django.db.models import QuerySet
+from MatchApp.models import PreMatch
 from MatchApp.serializera import (PreMatchSerializer, ScienderMatchSeriazlizer,
                                   ScienderUserCardSerializer)
-
-from rest_framework.serializers import ModelSerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
-
 from rest_framework.response import Response
-
-from MatchApp.models import PreMatch
+from rest_framework.serializers import ModelSerializer
 
 
 class UserCardListAPIView(generics.ListAPIView):
